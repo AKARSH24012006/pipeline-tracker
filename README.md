@@ -45,8 +45,12 @@ Next.js 15 (App Router, Server Actions) · TypeScript · Tailwind CSS v4 · Post
 ## Environment variables
 | Name | Required | Description |
 |---|---|---|
-| `DATABASE_URL` | yes | Postgres connection string (Neon, Supabase, or local) |
-| `AUTH_SECRET` | yes (prod) | Random string, 32+ characters, used to sign session tokens |
+| `DATABASE_URL` | yes | Postgres connection string (Neon, Supabase, or local). `POSTGRES_URL` is also accepted |
+| `AUTH_SECRET` | recommended | Random string, 32+ characters, used to sign session tokens. If unset, a key is derived from the database URL |
+
+## Live
+- App: https://pipeline-tracker-omega.vercel.app
+- Health check: https://pipeline-tracker-omega.vercel.app/api/health
 
 ## Run locally
 ```bash

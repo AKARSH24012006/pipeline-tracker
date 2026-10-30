@@ -8,7 +8,8 @@ import postgres from "postgres";
 const globalForDb = globalThis as unknown as { sql?: postgres.Sql; schemaReady?: Promise<void> };
 
 function createClient() {
-  const url = process.env.DATABASE_URL;
+  // DATABASE_URL is set by the Vercel ↔ Neon integration; POSTGRES_URL is its alias.
+  const url = process.env.DATABASE_URL ?? process.env.POSTGRES_URL;
   if (!url) throw new Error("DATABASE_URL is not set. See README → Environment variables.");
   const isLocal = /localhost|127\.0\.0\.1|host=\/tmp/.test(url);
   return postgres(url, {
